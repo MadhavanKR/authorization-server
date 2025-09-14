@@ -1,0 +1,24 @@
+public RegisteredClientRepository registeredClientRepository() {
+        RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
+                .clientId("sample-client")
+                .clientSecret("sample-secret")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+                .redirectUri("http://localhost:4200/callback")
+                .scope(OidcScopes.OPENID)
+                .scope("blinkai")
+                .tokenSettings(
+                        TokenSettings.builder()
+                                .accessTokenTimeToLive(Duration.ofHours(6))
+                                .build()
+                )
+                .clientSettings(
+                        ClientSettings.builder()
+                                .requireProofKey(true)
+                                .build()
+                )
+                .build();
+        return new InMemoryRegisteredClientRepository(registeredClient);
+    }

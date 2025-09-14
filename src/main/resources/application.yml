@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: authorization_server
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080
+  datasource:
+    password: authorization_server_admin
+    url: jdbc:postgresql://localhost:5432/authorization_server
+    username: authorization_server_admin
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.security.oauth2.server.resource: DEBUG
+    org.springframework.security.oauth2.server.authorization: DEBUG
+    org.springframework.web.filter: DEBUG

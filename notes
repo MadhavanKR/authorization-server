@@ -1,0 +1,6 @@
+I am building a spring authorization server which will be used by our application eco-system to secure resources and ensure secured access to them.
+
+We want to be able to register / update clients and applications dynamically in the authorization server.
+To do that, I am planning to build few rest apis as part of the authorization server that enables these operations.
+
+Now, There is a default security filter chain that secures the oauth endpoints, which generally leads to a form login. However, for these rest apis, which are more of an admin activity, I want to be able to perform it securely without UI login. Can you explain me the standard and secure approach to do it?
